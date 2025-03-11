@@ -1,66 +1,42 @@
-// Select elements
-const todoInput = document.getElementById("todo-input");
-const todoList = document.getElementById("todo-list");
-
-let todos = []; // Array to store todo items
-
-// Function to add a new todo
-function addTodo() {
-    let task = todoInput.value.trim(); // Get input value
-
-    if (task === "") {
-        alert("Please enter a task!");
-        return;
+function addTodoList() {
+    const inputValue = document.getElementById("todoInput");
+    const textValue = inputValue.value;
+    const todoText = document.getElementById("todoData");
+    const errorMsg = document.getElementById("errorMsg");
+  
+    if (textValue === "") {
+      errorMsg.textContent = "please add todo";
+      return;
     }
-
-    let newTodo = {
-        id: Date.now(), // Unique ID for each task
-        text: task,
-        completed: false
+  
+    errorMsg.textContent = "";
+    //   li create
+    const li = document.createElement("li");
+    li.textContent = textValue;
+    todoText.append(li);
+    //   console.log(li);
+  
+    const dltBtn = document.createElement("button");
+    dltBtn.textContent = "delete";
+    console.log(dltBtn);
+    dltBtn.className = "delete_btn";
+    dltBtn.onclick = function () {
+      console.log("delete");
+      todoText.removeChild(li);
     };
-
-    todos.push(newTodo); // Add to array
-    todoInput.value = ""; // Clear input
-    renderTodos(); // Refresh the UI
+  
+    li.appendChild(dltBtn);
 }
+  
 
-// Function to render the todo list
-function renderTodos() {
-    todoList.innerHTML = ""; // Clear previous list
+  const editBtn = document.createElement("edit");
+  dltBtn.textContent = "edit";
+  console.log( editBtn);
+  editBtn.className = "edit_btn";
+  editBtn.onclick = function () {
+    console.log("edit");
+    todoText.removeChild(li);
+  };
 
-    todos.forEach(todo => {
-        let li = document.createElement("li");
-        li.innerHTML = `
-            <input type="checkbox" onclick="toggleComplete(${todo.id})" ${todo.completed ? "checked" : ""}>
-            <span class="${todo.completed ? "completed" : ""}">${todo.text}</span>
-            <button onclick="editTodo(${todo.id})">✏️</button>
-            <button onclick="deleteTodo(${todo.id})">🗑️</button>
-        `;
-        todoList.appendChild(li);
-    });
-}
-
-// Function to toggle completion
-function toggleComplete(id) {
-    todos = todos.map(todo => 
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    );
-    renderTodos();
-}
-
-// Function to edit a todo
-function editTodo(id) {
-    let newTask = prompt("Edit your task:");
-    if (newTask) {
-        todos = todos.map(todo => 
-            todo.id === id ? { ...todo, text: newTask } : todo
-        );
-        renderTodos();
-    }
-}
-
-// Function to delete a todo
-function deleteTodo(id) {
-    todos = todos.filter(todo => todo.id !== id);
-    renderTodos();
-}
+  li.appendChild( editBtn);
+  

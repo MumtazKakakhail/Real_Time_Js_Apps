@@ -5,7 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin-top: 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+h1 {
+    color: rgb(70, 41, 175);
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.buttons button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+
+button:nth-child(1) {
+    background-color: rgb(10, 134, 10);
+}
+
+button:nth-child(2) {
+    background-color: rgb(122, 122, 122);
+}
+
+button:nth-child(3) {
+    background-color: rgb(226, 6, 6);
+}
+
+</style>
 <body>
+    <body>
+
+        <div class="container">
+            <h1>Counter App</h1>
+            <h2 id="counter">0</h2>
+            <div class="buttons">
+                <button onclick="increase()">Increase</button>
+                <button onclick="reset()">Reset</button>
+                <button onclick="decrease()">Decrease</button>
+            </div>
+        </div>
     <script src="./script.js"></script>
 </body>
 </html>
