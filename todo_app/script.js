@@ -26,8 +26,8 @@ function addTodoList() {
     };
   
     li.appendChild(dltBtn);
-}
-  
+
+   }
 
   const editBtn = document.createElement("edit");
   dltBtn.textContent = "edit";
@@ -39,4 +39,5 @@ function addTodoList() {
   };
 
   li.appendChild( editBtn);
+ 
   
